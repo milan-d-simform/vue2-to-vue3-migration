@@ -10,21 +10,15 @@
   </div>
 </template>
 
-<script>
-import { mapActions } from 'vuex';
-export default {
-  name: "AddTodo",
-  data() {
-    return {
-      newTodo: "",
-    };
-  },
-  methods: {
-    ...mapActions(['addTodo']),
-    addNewTodo() {
-      this.addTodo(this.newTodo);
-      this.newTodo = "";
-    },
-  },
+<script setup>
+import { ref } from 'vue';
+import { useStore } from 'vuex'
+
+const store = useStore();
+const newTodo = ref('');
+
+const addNewTodo = async () => {
+  await store.dispatch('addTodo', newTodo.value);
+  newTodo.value = '';
 };
 </script>

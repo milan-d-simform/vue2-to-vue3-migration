@@ -16,21 +16,16 @@
   </div>
 </template>
 
-<script>
-import { mapState, mapActions } from 'vuex';
-export default {
-  name: "TodoList",
-  computed: {
-    ...mapState(['todos']),
-    capitalizeTodoTitle(){
-      return title => {
-        if (!title) return '';
-        return title.charAt(0).toUpperCase() + title.slice(1);
-      }
-    }
-  },
-  methods: {
-    ...mapActions(['removeTodo']),
-  },
+<script setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const todos = computed(() => store.state.todos);
+const capitalizeTodoTitle =  (value) => {
+  if (!value) return '';
+  return value.charAt(0).toUpperCase() + value.slice(1);
 };
+
+const removeTodo = (index) => store.dispatch('removeTodo', index);
 </script>
