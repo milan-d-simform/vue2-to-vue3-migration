@@ -12,7 +12,7 @@
     "core-js": "^3.8.3",
     "vue": "^3.1.0",
     "@vue/compat": "^3.1.0",
-    "vuex": "^2.5.0"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
